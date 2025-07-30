@@ -28,7 +28,11 @@ export class InvoiceAgent extends Agent<Env, State> {
 			options: { skipCache: true },
 		});
 
-		const apiKey = process.env.OPENAI_API_KEY || this.env.OPENAI_API_KEY;
+		const apiKey = this.env?.OPENAI_API_KEY || process.env.OPENAI_API_KEY;
+
+		if (!apiKey) {
+			throw new Error("OPENAI_API_KEY is not set");
+		}
 		if (!apiKey) {
 			throw new Error("OPENAI_API_KEY environment variable not set");
 		}

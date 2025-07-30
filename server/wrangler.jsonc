@@ -66,6 +66,7 @@
   "vars": {
     "ENVIRONMENT": "development",
     "AI_GATEWAY_ACCOUNT_ID": "158383d713070869aada91c8e289a583",
-    "AI_GATEWAY_GATEWAY_ID": "blueshift"
+    "AI_GATEWAY_GATEWAY_ID": "blueshift",
+    "OPENAI_API_KEY": "123"
   }
 }
