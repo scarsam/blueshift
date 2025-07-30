@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { InstanceProvider } from "./contexts/instance-context";
 import VoucherDetail from "./pages/voucher/voucher-details";
 import VoucherList from "./pages/voucher/voucher-list";
@@ -22,7 +21,6 @@ const App = () => {
 								<Route path="/vouchers/:id" element={<VoucherDetail />} />
 							</Routes>
 						</main>
-						<ThemeToggle />
 						<Toaster />
 					</div>
 				</Router>
