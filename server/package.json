@@ -1,17 +1,27 @@
 {
-  "name": "server",
-  "version": "0.0.1",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "dev": "bun --watch run src/index.ts && tsc --watch"
-  },
-  "dependencies": {
-    "hono": "^4.7.11",
-    "shared": "workspace:*"
-  },
-  "devDependencies": {
-    "@types/bun": "latest"
-  }
+	"name": "server",
+	"version": "0.0.1",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"dev": "wrangler dev --x-remote-bindings",
+		"deploy": "wrangler deploy --minify",
+		"cf-typegen": "wrangler types"
+	},
+	"dependencies": {
+		"@ai-sdk/openai": "^1.3.23",
+		"agents": "^0.0.109",
+		"ai": "^4.3.19",
+		"ai-gateway-provider": "^0.0.11",
+		"hono": "^4.7.11",
+		"hono-agents": "^0.0.99",
+		"shared": "workspace:*",
+		"zod": "^3.0.0"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20250726.0",
+		"@types/bun": "latest",
+		"wrangler": "^4.4.0"
+	}
 }
