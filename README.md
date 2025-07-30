@@ -1,4 +1,4 @@
-# Blueshift Invoice Agent 🧾
+# 🧾 Blueshift Invoice Agent 🧾
 
 An AI-powered invoice processing application that extracts data from invoice images and generates US GAAP compliant journal vouchers using Cloudflare Workers, AI agents, and modern web technologies.
 
