@@ -1,0 +1,71 @@
+{
+  // Wrangler configuration schema
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  // Project configuration
+  "name": "blueshift-invoice-processor",
+  "main": "src/index.ts",
+  "compatibility_date": "2024-12-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Key-Value storage for invoice and voucher data
+  "kv_namespaces": [
+    {
+      "binding": "INVOICE_DB",
+      "id": "b5271d24716143999355b557fb671b67"
+    }
+  ],
+
+  // R2 object storage for files and assets
+  "r2_buckets": [
+    {
+      "binding": "INVOICES",
+      "bucket_name": "invoices",
+      "experimental_remote": true
+    },
+    {
+      "binding": "ASSETS",
+      "bucket_name": "assets",
+      "experimental_remote": true
+    }
+  ],
+
+  // Durable Objects for stateful workflow management
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "INVOICE_AGENT",
+        "class_name": "InvoiceAgent"
+      }
+    ]
+  },
+
+  // AI binding for Cloudflare AI services
+  "ai": {
+    "binding": "AI"
+  },
+
+  // Vectorize for knowledge base search
+  "vectorize": [
+    {
+      "binding": "VECTORIZE",
+      "index_name": "blueshift-knowledge",
+      "experimental_remote": true
+    }
+  ],
+
+  // Database migrations for Durable Objects
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["InvoiceAgent"]
+    }
+  ],
+
+  // Environment variables
+  "vars": {
+    "ENVIRONMENT": "development",
+    "AI_GATEWAY_ACCOUNT_ID": "158383d713070869aada91c8e289a583",
+    "AI_GATEWAY_GATEWAY_ID": "blueshift"
+  }
+}

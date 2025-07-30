@@ -21,6 +21,6 @@
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": false
   },
-  "include": ["src/**/*"],
+  "include": ["worker-configuration.d.ts", "src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
