@@ -10,7 +10,7 @@ import InvoicePage from "./pages/invoice";
 
 const App = () => {
 	return (
-		<ThemeProvider defaultTheme="light" storageKey="invoice-workflow-theme">
+		<ThemeProvider defaultTheme="dark" storageKey="invoice-workflow-theme">
 			<InstanceProvider>
 				<Router>
 					<div className="min-h-screen bg-background">

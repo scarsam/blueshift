@@ -1,6 +1,9 @@
 export const onRequest: PagesFunction = async ({ request }) => {
 	const url = new URL(request.url);
+
+	// Remove `/agents` prefix from path
 	const path = url.pathname.replace(/^\/agents/, "");
+
 	const proxyUrl = `https://blueshift-invoice-processor.s-ojling.workers.dev${path}${url.search}`;
 
 	// Handle WebSocket upgrade
