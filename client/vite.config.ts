@@ -13,12 +13,4 @@ export default defineConfig({
 			"@": path.resolve(__dirname, "./src"),
 		},
 	},
-	server: {
-		proxy: {
-			"/agents": {
-				target: "ws://localhost:8787",
-				ws: true,
-			},
-		},
-	},
 });

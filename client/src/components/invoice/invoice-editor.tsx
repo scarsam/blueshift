@@ -25,6 +25,7 @@ export function InvoiceEditor({ instanceId }: { instanceId: string }) {
 	const connection = useAgent({
 		agent: "invoice-agent",
 		name: instanceId,
+		host: import.meta.env.VITE_SERVER_WS ?? "ws://localhost:8787",
 		onMessage: (msg) => {
 			const data = JSON.parse(msg.data);
 			if (data.type === "parsed_invoice") {
