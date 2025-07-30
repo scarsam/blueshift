@@ -13,6 +13,28 @@ Blueshift automates the entire invoice-to-voucher workflow:
 5. **🔍 AutoRAG Integration**: Leverages accounting knowledge base for accurate entries
 6. **💾 Voucher Management**: View, edit, and manage generated vouchers
 
+## 📄 Sample Invoice Processing
+
+The system handles various invoice formats and complexities. Here are examples of invoices it can process:
+
+### Simple Invoice Example
+![Simple Invoice](assets/invoice-1.jpg)
+
+**Invoice #40378170** - A straightforward single-item invoice:
+- **Vendor**: Patel, Thompson and Montgomery
+- **Item**: Wine accessories gift set
+- **Total**: $8.25 (including 10% VAT)
+- **Complexity**: Basic format with standard fields
+
+### Complex Multi-Item Invoice
+![Complex Invoice](assets/invoice-2.jpg)
+
+**Invoice #61356291** - A detailed multi-item invoice:
+- **Vendor**: Chapman, Kim and Green
+- **Items**: 4 different wine-related products
+- **Total**: $212.09 (including 10% VAT)
+- **Complexity**: Multiple line items with varying quantities and prices
+
 ## 🏗️ Architecture
 
 Built on a modern full-stack TypeScript architecture:
