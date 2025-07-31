@@ -1,4 +1,6 @@
-# 🧾 Blueshift Invoice Agent 🧾
+# Blueshift Invoice Agent 🧾
+
+![Invoice Processing](https://cdn.stevedylan.dev/ipfs/bafybeievx27ar5qfqyqyud7kemnb5n2p4rzt2matogi6qttwkpxonqhra4)
 
 An AI-powered invoice processing application that extracts data from invoice images and generates US GAAP compliant journal vouchers using Cloudflare Workers, AI agents, and modern web technologies.
 
@@ -11,7 +13,7 @@ Blueshift automates the entire invoice-to-voucher workflow:
 3. **📊 Data Validation**: Editable invoice details with real-time validation
 4. **📚 GAAP Compliance**: Generates journal vouchers following US GAAP standards
 5. **🔍 AutoRAG Integration**: Leverages accounting knowledge base for accurate entries
-6. **💾 Voucher Management**: View, edit, and manage generated vouchers
+6. **💾 Voucher Management**: View, export, and manage generated vouchers
 
 ## 📄 Sample Invoice Processing
 
@@ -34,6 +36,16 @@ The system handles various invoice formats and complexities. Here are examples o
 - **Items**: 4 different wine-related products
 - **Total**: $212.09 (including 10% VAT)
 - **Complexity**: Multiple line items with varying quantities and prices
+
+### AI Processing Capabilities
+
+The system accurately extracts:
+- ✅ **Invoice Numbers**: 40378170, 61356291
+- ✅ **Dates**: 10/15/2012, 09/06/2012
+- ✅ **Vendor Information**: Complete company names and addresses
+- ✅ **Line Items**: Product descriptions, quantities, unit prices
+- ✅ **Tax Calculations**: VAT percentages and amounts
+- ✅ **Totals**: Net worth, VAT, and gross totals
 
 ## 🏗️ Architecture
 
@@ -94,15 +106,30 @@ Built on a modern full-stack TypeScript architecture:
 - **Cloudflare AI**: Edge AI processing
 - **Custom Prompts**: Accounting-specific prompt engineering
 
-## 🎓 Dataset Exploration
+## 🎓 Dataset Exploration & AI Model Research
 
-Initially planned to integrate specialized invoice datasets and OCR models from Hugging Face:
+During development, we extensively researched specialized invoice processing models and datasets from Hugging Face:
 
-### Invoice Datasets
-- [Invoices Donut Data v1](https://huggingface.co/datasets/katanaml-org/invoices-donut-data-v1): Comprehensive invoice dataset for training
-- Various OCR models for document processing
+### Explored Datasets & Models
+- **[Invoices Donut Data v1](https://huggingface.co/datasets/katanaml-org/invoices-donut-data-v1)**: Comprehensive invoice dataset for training document understanding models
+- **[LayoutLM for Invoices](https://huggingface.co/impira/layoutlm-invoices)**: Pre-trained model specifically fine-tuned for invoice processing
+- **[FinTagging Collection](https://huggingface.co/collections/TheFinAI/fintagging-68270132372c6608ac069bef)**: Financial document processing models and datasets
 
-However, these models aren't hosted on Cloudflare's AI platform, so we pivoted to using GPT-4 Vision which provides excellent out-of-the-box performance for invoice processing without requiring custom model hosting.
+### Platform Limitations & Solution
+These specialized models weren't available on Cloudflare's AI platform, so we pivoted to using **GPT-4 Vision** which provides excellent out-of-the-box performance for invoice processing without requiring custom model hosting.
+
+### Custom Knowledge Base
+Instead of relying solely on pre-trained models, we manually curated a comprehensive RAG (Retrieval-Augmented Generation) document that includes:
+
+- **US GAAP Taxonomy**: Complete accounting standards and classifications
+- **ASC References**: Accounting Standards Codification guidelines
+- **Account Code Mappings**: Standard chart of accounts with 4-digit codes
+- **Industry Best Practices**: Professional accounting procedures and compliance requirements
+- **Transaction Examples**: Real-world journal entry patterns and reasoning
+
+This approach provides more accurate, compliant, and contextually relevant accounting guidance than generic financial models.
+
+The sample invoices shown above demonstrate the system's ability to handle real-world invoice formats effectively using this hybrid AI + knowledge base approach.
 
 ## 🚀 Getting Started
 
@@ -110,30 +137,6 @@ However, these models aren't hosted on Cloudflare's AI platform, so we pivoted t
 - Node.js 18+ or Bun
 - Cloudflare account
 - OpenAI API key
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/your-username/blueshift-invoice-agent
-cd blueshift-invoice-agent
-
-# Install dependencies
-bun install
-# or
-npm install
-```
-
-### Environment Setup
-
-```bash
-# Local development (.env)
-OPENAI_API_KEY=sk-your-openai-key-here
-VITE_SERVER_URL=http://localhost:8787
-
-# Production (Cloudflare secrets)
-npx wrangler secret put OPENAI_API_KEY
-```
 
 ### Development
 
@@ -144,32 +147,6 @@ bun run dev
 # Or run components separately
 bun run dev:client  # Frontend on :5173
 bun run dev:server  # Backend on :8787
-```
-
-### Building
-
-```bash
-# Build for production
-bun run build
-
-# Build individual parts
-bun run build:client
-bun run build:server
-```
-
-## 🌐 Deployment
-
-### Cloudflare Pages + Workers
-
-```bash
-# Deploy frontend to Cloudflare Pages
-npx wrangler pages deploy dist --project-name=blueshift
-
-# Deploy backend to Cloudflare Workers
-npx wrangler deploy
-
-# Set production secrets
-npx wrangler secret put OPENAI_API_KEY
 ```
 
 ### Environment Variables
@@ -211,6 +188,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Cloudflare** for Workers and AI platform
 - **ShadCN** for beautiful UI components
 - **Vercel** for AI SDK and development tools
+- **Hugging Face** for inspiring our research into specialized financial AI models
 
 ## 📚 Learn More
 

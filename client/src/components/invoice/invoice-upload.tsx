@@ -109,8 +109,9 @@ export function InvoiceUpload({ instanceId }: UploadFormProps) {
 					<h2 className="text-lg font-medium">Upload Invoice</h2>
 				</div>
 
-				<div
-					className={`border-2 border-dashed rounded-lg p-12 text-center transition-all duration-200 ${
+				<button
+					type="button"
+					className={`w-full border-2 border-dashed rounded-lg p-12 text-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
 						dragOver
 							? "border-primary bg-primary/5"
 							: file
@@ -120,6 +121,8 @@ export function InvoiceUpload({ instanceId }: UploadFormProps) {
 					onDrop={handleDrop}
 					onDragOver={handleDragOver}
 					onDragLeave={handleDragLeave}
+					onClick={() => document.getElementById("file-input")?.click()}
+					aria-label="Upload invoice file by clicking or dragging and dropping"
 				>
 					{file ? (
 						<div className="space-y-3">
@@ -144,7 +147,7 @@ export function InvoiceUpload({ instanceId }: UploadFormProps) {
 							</div>
 						</div>
 					)}
-				</div>
+				</button>
 
 				<Input
 					type="file"
